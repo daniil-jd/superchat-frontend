@@ -30,7 +30,6 @@ class Authentication extends Component {
 
         try {
             this.setState({loading: true, error: null});
-            // console.log(client.get());
             const response = await client.post('/authentication', {
                 username, // username: username
                 password, // password: password
@@ -42,7 +41,7 @@ class Authentication extends Component {
 
             // setState нужно делать до push
             this.context.authenticate(username, authenticationToken);
-            this.props.history.push(routes.chat);
+            this.props.history.push(routes.slack);
         } catch (e) {
             this.setState({error : extractError(e), loading: false});
         }

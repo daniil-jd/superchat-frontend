@@ -5,7 +5,6 @@ import routes from "../routes/routes.js";
 import AuthenticationContext from '../context/AuthenticationContext';
 
 class NavBar extends Component {
-
     onSignIn = () => { // чтобы не было проблем
         this.props.history.push(routes.authentication);
     };
@@ -23,13 +22,8 @@ class NavBar extends Component {
 
         return (
             <nav className="navbar navbar-expand-md navbar-light bg-light mb-3">
-                <Link to={routes.root} className="navbar-brand">Chat</Link>
+                <Link to={routes.slack} className="nav-link">Slack</Link>
 
-                <ul className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                        <Link to={routes.recentMemos} className="nav-link">Recent</Link>
-                    </li>
-                </ul>
                 <form className="form-inline my-2 my-lg-0">
                     <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
                 </form>
@@ -56,21 +50,6 @@ class NavBar extends Component {
                 </div>
             </nav>
         );
-
-        // if (!this.context.authenticated) {
-        //    return (
-        //         <nav>
-        //            <button onClick={() => this.onSignIn()}>Sign in</button>
-        //            <button onClick={() => this.onSignUp()}>Sign Up</button>
-        //         </nav>
-        //     )
-        // }
-        //
-        // return (
-        //     <nav>
-        //         <button onClick={() => this.onLogout()}>Logout</button>
-        //     </nav>
-        // );
     }
 }
 

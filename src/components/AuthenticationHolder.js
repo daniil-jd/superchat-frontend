@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import client from '../http/client';
 import AuthenticationContext from '../context/AuthenticationContext';
@@ -70,14 +69,15 @@ class AuthenticationHolder extends Component {
     };
 
     authenticate = (username, token) => {
-        console.log('authenticate mount ', token);
-        localStorage.setItem('token', token);
-        localStorage.setItem('username', username);
-        console.log('localStorage.setItem(\'username\', username);', localStorage.getItem('username'));
-        this.setState({
-            token,
-            authenticated: true
-        });
+        if (token !== null) {
+
+            localStorage.setItem('token', token);
+            localStorage.setItem('username', username);
+            this.setState({
+                token,
+                authenticated: true
+            });
+        }
     };
 
     // const src = {id: 1, value: 'token'};

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import client from "../http/client";
 
 class Registration extends Component {

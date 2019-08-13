@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import client from '../http/client';
 import { extractError } from "../utils/utils.js";
-import MemoCard from "./MemoCard.js";
 import Loader from "./Loader.js";
 import ChatDetails from "./ChatCard";
 import AuthenticationContext from "../context/AuthenticationContext";
@@ -39,7 +37,7 @@ class Chat extends Component {
                     roomName: o.name,
                     message: msg,
                     created: '2019-08-09T00:30:45.511846700',
-                    status: 'status'
+                    status: 'MESSAGE'
                 }));
             } catch (e) {
                 console.log('send error')
@@ -118,6 +116,8 @@ class Chat extends Component {
     };
 
     render() {
+        console.log('Chat render mount');
+        console.log(this.state.items);
         if (this.state.loading) {
             return (<Loader />);
         }
