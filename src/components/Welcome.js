@@ -5,7 +5,6 @@ import { extractError } from "../utils/utils.js";
 class Welcome extends Component {
     state = {
         loading: false,
-        items: [],
         error: null,
     };
 
@@ -22,7 +21,6 @@ class Welcome extends Component {
             return (<Loader />);
         }
 
-        const {items} = this.state;
         return (
             <div className="container">
                 <div className="row">

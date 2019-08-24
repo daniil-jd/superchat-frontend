@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import MessageList from './MessageList'
 import SendMessageForm from './SendMessageForm'
 import TypingIndicator from './TypingIndicator'
-import WhosOnlineList from './WhosOnlineList'
+import SideChatList from './SideChatList'
 import client from "../http/client";
 import {extractError} from "../utils/utils";
 import Loader from "./Loader";
@@ -36,6 +36,7 @@ class SlackCloneChatScreen extends Component {
                     return;
                 }
                 const messages = JSON.parse(evt.data);
+                console.log(messages[0].created);
                 const roomName = messages[0].roomName;
                 this.setState(
                     {
@@ -62,6 +63,8 @@ class SlackCloneChatScreen extends Component {
 
     onSend = (evt, msg) => {
         console.log('in onSend');
+        console.log((new Date().getTime()));
+
         if (this.state.ws === null || this.state.ws.readyState !== WebSocket.OPEN) {
             this.connect();
         }
@@ -73,7 +76,7 @@ class SlackCloneChatScreen extends Component {
                     authorName: this.state.currentUser,
                     roomName: this.state.currentRoom,
                     message: msg,
-                    created: Math.floor(new Date().getTime()/ 1000),
+                    created: (new Date().getTime()),
                     status: 'MESSAGE'
                 }));
                 console.log('send!')
@@ -137,7 +140,7 @@ class SlackCloneChatScreen extends Component {
             <div style={styles.container}>
                 <div style={styles.chatContainer}>
                     <aside style={styles.whosOnlineListContainer}>
-                        <WhosOnlineList
+                        <SideChatList
                             rooms={this.state.rooms}
                             ws = {this.state.ws}
                         />
@@ -149,6 +152,7 @@ class SlackCloneChatScreen extends Component {
                         />
                         <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping} />
                         <SendMessageForm
+                            enabled={this.state.currentRoom!==null}
                             onSubmit={this.onSend}
                             onChange={this.sendTypingEvent}
                         />

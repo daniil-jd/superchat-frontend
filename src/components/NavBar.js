@@ -24,6 +24,8 @@ class NavBar extends Component {
             <nav className="navbar navbar-expand-md navbar-light bg-light mb-3">
                 <Link to={routes.slack} className="nav-link">Slack</Link>
 
+                <Link to={routes.create} className="nav-link" >Create chat</Link>
+
                 <form className="form-inline my-2 my-lg-0">
                     <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
                 </form>

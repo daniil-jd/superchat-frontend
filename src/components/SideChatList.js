@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class WhosOnlineList extends Component {
+class SideChatList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,11 +16,11 @@ class WhosOnlineList extends Component {
             <div className="list-group">
                 {rooms.map((room, index) => {
                     return (
-                        <WhosOnlineListItem key={index}
+                        <SideChatListItem key={index}
                                             name = {room.name}
                                             ws = {ws}
                         >
-                        </WhosOnlineListItem>
+                        </SideChatListItem>
                     )
                 })}
             </div>
@@ -28,7 +28,7 @@ class WhosOnlineList extends Component {
     }
 }
 
-class WhosOnlineListItem extends Component {
+class SideChatListItem extends Component {
     render() {
         const roomName = this.props.name;
         const webSocket = this.props.ws;
@@ -70,15 +70,13 @@ class WhosOnlineListItem extends Component {
             return;
         }
 
-        var offset = new Date().getTimezoneOffset();
-
         try {
             ws.send(JSON.stringify({
                 id: 0,
                 authorName: localStorage.getItem('username'),
                 roomName: name,
                 message: 'get all room messages',
-                created: '2019-08-09T00:30:45.511846700',
+                created: (new Date().getTime()),
                 status: 'GET_ALL_CHAT_MESSAGES'
             }));
             console.log('send!')
@@ -88,4 +86,4 @@ class WhosOnlineListItem extends Component {
     }
 }
 
-export default WhosOnlineList
+export default SideChatList

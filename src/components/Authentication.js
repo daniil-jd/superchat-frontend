@@ -7,7 +7,7 @@ import Loader from "./Loader.js";
 import { extractError } from "../utils/utils.js";
 
 class Authentication extends Component {
-    state = { // хранит данные, введённые в поля ввода + loading
+    state = {
         loading: false,
         formData: {
             username: '',
@@ -16,9 +16,8 @@ class Authentication extends Component {
         error: null,
     };
     componentDidMount() {
-        console.log('auth mount');
         if (this.context.authenticated) {
-            this.props.history.push(routes.chat);
+            this.props.history.push(routes.slack);
         }
     }
 
@@ -36,7 +35,6 @@ class Authentication extends Component {
             });
             // console.log(response.data.authenticationToken);
             const {authenticationToken} = response.data; // const token = response.token;
-            console.log('token = ',authenticationToken);
             this.setState({error: null, loading: false});
 
             // setState нужно делать до push

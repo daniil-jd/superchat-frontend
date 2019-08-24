@@ -9,9 +9,9 @@ import AuthenticationHolder from "./components/AuthenticationHolder";
 import Registration from "./components/Registration";
 import RegistrationCheckEmail from "./components/RegistrationCheckEmail";
 import NotFound from "./components/NotFound";
-import MemoDetails from "./components/MemoDetails";
-import Chat from "./components/Chat";
 import SlackCloneChatScreen from "./components/SlackCloneChatScreen";
+import CreateChatScreen from "./components/CreateChatScreen";
+import RegistrationConfirmation from "./components/RegistrationConfirmation";
 
 class App extends Component {
 
@@ -28,11 +28,11 @@ class App extends Component {
                                 <Switch>
                                     <Route exact={true} path={routes.root} component={Welcome} />
                                     <Route exact={true} path={routes.slack} component={SlackCloneChatScreen} />
+                                    <Route exact={true} path={routes.create} component={CreateChatScreen} />
                                     <Route exact={true} path={routes.authentication} component={Authentication} />
                                     <Route exact={true} path={routes.registration} component={Registration} />
                                     <Route exact={true} path={routes.registrationCheckEmail} component={RegistrationCheckEmail} />
-                                    <Route exact={true} path={routes.chat} component={Chat} />
-                                    <Route exact={true} path={routes.memoDetails} component={MemoDetails} />
+                                    <Route exact={true} path={routes.registrationConfirmation} component={RegistrationConfirmation} />
                                     <Route component={NotFound}/>
                                 </Switch>
                             </AuthenticationHolder>

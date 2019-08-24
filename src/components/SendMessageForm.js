@@ -18,8 +18,8 @@ class SendMessageForm extends Component {
 
     onChange(e) {
         this.setState({ text: e.target.value });
-        if (this.props.onChange) {
-            this.props.onChange();
+        if (this.props.onChatNameChange) {
+            this.props.onChatNameChange();
         }
     }
 
@@ -42,6 +42,11 @@ class SendMessageForm extends Component {
                 fontSize: 16,
             },
         };
+
+        if (!this.props.enabled) {
+            return null;
+        }
+
         return (
             <div style={styles.container}>
                 <div>
