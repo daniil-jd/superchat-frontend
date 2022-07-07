@@ -9,7 +9,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "moment": "2.24.0",
+    "moment": "2.29.4",
     "react-input-datalist": "5.0.0",
     "react-datalist-input": "^1.2.8"
   },
